@@ -55,6 +55,13 @@ namespace DigiBank.Classes
             Console.WriteLine("             =============================              ");
             Console.WriteLine("               Digite se CPF:                           ");
             string cfp = Console.ReadLine();
+            if (!ValidarCpf.ValidaCPF(cfp))
+            {
+                Console.WriteLine("CPF invalido");
+                Thread.Sleep(2000);
+                TelaCriarConta();
+            }
+
             Console.WriteLine("             =============================              ");
             Console.WriteLine("               Digite sua senha:                        ");
             string senha = Console.ReadLine();
@@ -64,21 +71,23 @@ namespace DigiBank.Classes
 
             ContaCorrente contaCorrente = new ContaCorrente();
             Pessoa pessoa = new Pessoa();
+            
             pessoa.SetNome(nome);
             pessoa.SetCPF(cfp);
-            pessoa.SetSenha(senha);
-            pessoa.Conta = contaCorrente;
 
-            pessoas.Add(pessoa);
+                pessoa.SetSenha(senha);
+                pessoa.Conta = contaCorrente;
 
-            
+                pessoas.Add(pessoa);
+
+                
 
             Console.WriteLine("             Conta cadastrada com sucesso.              ");
             Console.WriteLine("             =============================              ");
-
             Thread.Sleep(2000); // espera 1 segundo para aparecer a tela de conta logada.
-
             TelaContaLogada(pessoa);
+
+             
            
             
 
@@ -326,5 +335,7 @@ namespace DigiBank.Classes
             Console.WriteLine("");
             OpcaoVoltarLogado(pessoa);
         }
+
+        
     }
 }

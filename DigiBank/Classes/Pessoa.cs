@@ -29,5 +29,6 @@ namespace DigiBank.Classes
             this.Senha = senha;
         }
 
+
     }
 }
